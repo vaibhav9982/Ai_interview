@@ -16,7 +16,7 @@
 
 import { NavLink } from 'react-router-dom';
 import {
-  LayoutDashboard, Users, Briefcase, MessageSquare, FileText,
+  LayoutDashboard, Users, MessageSquare, FileText,
   Target, CreditCard, DollarSign, BarChart2, Settings,
   Shield, Crown, LogOut, RefreshCw, Terminal,
 } from 'lucide-react';
@@ -30,7 +30,6 @@ const NAV_GROUPS = [
     items: [
       { to: '/admin',            label: 'Dashboard',    icon: LayoutDashboard, end: true },
       { to: '/admin/users',      label: 'Users',         icon: Users,           permission: 'view:users' },
-      { to: '/admin/jobs',       label: 'Jobs',          icon: Briefcase,       permission: 'view:jobs' },
       { to: '/admin/interviews', label: 'Interviews',    icon: MessageSquare,   permission: 'view:templates' },
       { to: '/admin/resumes',    label: 'Resumes',       icon: FileText,        permission: 'view:users' },
     ],

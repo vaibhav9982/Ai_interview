@@ -15,7 +15,7 @@ import {
   Users, Briefcase, MessageSquare, FileText,
   TrendingUp, UserCheck, Star, Activity,
   ArrowRight, RefreshCw, DollarSign, AlertCircle,
-  Shield, CheckCircle2, UserPlus, Play, Terminal, HelpCircle
+  Shield, CheckCircle2, UserPlus, Terminal, HelpCircle
 } from 'lucide-react';
 import {
   ResponsiveContainer, AreaChart, Area, BarChart, Bar,
@@ -163,14 +163,6 @@ export default function AdminDashboardPage() {
           sub="All-time generated"
           color="purple"
           to="/admin/interviews"
-        />
-        <StatCard
-          icon={Briefcase}
-          label="Active Jobs"
-          value={stats?.jobsCount}
-          sub="Available Listings"
-          color="teal"
-          to="/admin/jobs"
         />
         <StatCard
           icon={FileText}
@@ -346,10 +338,6 @@ export default function AdminDashboardPage() {
               <Link to="/admin/settings" className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.06] text-slate-300 text-xs font-medium transition-colors">
                 <Shield size={13} className="text-purple-400" />
                 System Audit
-              </Link>
-              <Link to="/admin/jobs" className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.06] text-slate-300 text-xs font-medium transition-colors">
-                <Play size={13} className="text-emerald-400" />
-                Sync Listings
               </Link>
               <Link to="/admin/settings" className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/[0.06] text-slate-300 text-xs font-medium transition-colors">
                 <Terminal size={13} className="text-orange-400" />

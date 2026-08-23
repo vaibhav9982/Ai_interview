@@ -107,11 +107,7 @@ export default function LandingPage() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-
-      {/* ── FULL-PAGE IRIDESCENCE ─────────────────────────────────────
-          Stays fixed behind everything, visible through all sections
-      ──────────────────────────────────────────────────────────────── */}
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 overflow-hidden">
         <Iridescence
           color={[0.792156862745098, 0.14901960784313725, 0.3137254901960784]}
           mouseReact
@@ -119,8 +115,6 @@ export default function LandingPage() {
           speed={1}
         />
       </div>
-
-      {/* ── Content wrapper — sits above iridescence ────────────────── */}
       <div className="relative z-10">
 
         {/* ═══════════════════════════════════════════════════════════════
@@ -130,7 +124,7 @@ export default function LandingPage() {
           initial={{ y: -80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-50
+          className="absolute top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-5xl z-50
                      bg-white/[0.05] backdrop-blur-2xl border border-white/[0.07]
                      rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
         >
@@ -166,9 +160,7 @@ export default function LandingPage() {
             HERO — Full viewport, transparent so iridescence shows
         ═══════════════════════════════════════════════════════════════ */}
         <section className="relative min-h-screen flex items-center justify-center px-6">
-          {/* Soft vignette — no hard edges */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,transparent_40%,rgba(15,15,26,0.5)_100%)]" />
-
           <div className="max-w-5xl mx-auto text-center relative z-10 pt-20">
             <motion.div variants={stagger} initial="hidden" animate="visible">
 
@@ -189,7 +181,7 @@ export default function LandingPage() {
               <motion.h1 variants={fadeUp}
                 className="text-5xl sm:text-7xl lg:text-8xl font-display font-extrabold text-white leading-[0.92] mb-8 tracking-tight"
               >
-                Ace Every
+                Crack Every
                 <br />
                 <span className="relative inline-block mt-2">
                   <span className="bg-gradient-to-r from-rose-300 via-pink-300 to-fuchsia-300 bg-clip-text text-transparent">

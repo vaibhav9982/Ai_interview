@@ -49,28 +49,6 @@ export const getAdminResumes = (params) =>
 export const deleteAdminResume = (id) =>
   adminApi.delete(`/admin/resumes/${id}`).then((r) => r.data);
 
-// ── Jobs ───────────────────────────────────────────────────────────
-export const getAdminJobs = (params) =>
-  adminApi.get('/admin/jobs', { params }).then((r) => r.data.data);
-
-export const getAdminJobStats = () =>
-  adminApi.get('/admin/jobs/stats').then((r) => r.data.data);
-
-export const getAdminJob = (id) =>
-  adminApi.get(`/admin/jobs/${id}`).then((r) => r.data.job);
-
-export const createAdminJob = (payload) =>
-  adminApi.post('/admin/jobs', payload).then((r) => r.data);
-
-export const updateAdminJob = (id, payload) =>
-  adminApi.patch(`/admin/jobs/${id}`, payload).then((r) => r.data.job);
-
-export const deleteAdminJob = (id) =>
-  adminApi.delete(`/admin/jobs/${id}`).then((r) => r.data);
-
-export const bulkAdminJobsAction = (action, jobIds) =>
-  adminApi.post('/admin/jobs/bulk', { action, jobIds }).then((r) => r.data);
-
 // ── Scraper ────────────────────────────────────────────────────────
 export const getAdminScraperStatus = () =>
   adminApi.get('/admin/scraper/status').then((r) => r.data);

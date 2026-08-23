@@ -83,7 +83,7 @@ export function debounce(fn, delay = 400) {
 
   import { useDebounce } from '@/utils/useDebounce';
 
-  function JobSearchBar({ onSearch }) {
+  function SearchInput({ onSearch }) {
     const [input, setInput] = useState('');
     const debouncedInput = useDebounce(input, 400);
 
@@ -97,7 +97,7 @@ export function debounce(fn, delay = 400) {
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Search jobs…"
+        placeholder="Search…"
       />
     );
   }
@@ -106,10 +106,8 @@ export function debounce(fn, delay = 400) {
 
   import { debounce } from '@/utils/useDebounce';
 
-  const debouncedSearch = debounce(async (q) => {
-    const res  = await fetch(`/api/jobs/search?q=${encodeURIComponent(q)}&page=1`);
-    const data = await res.json();
-    renderResults(data.results);
+  const debouncedSearch = debounce((query) => {
+    runSearch(query);
   }, 400);
 
   document.getElementById('search-input')

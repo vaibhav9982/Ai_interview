@@ -16,23 +16,50 @@ export default function SessionResultPage() {
   const { id } = useParams();
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [expandedAnswer, setExpandedAnswer] = useState(null);
 
-  useEffect(() => {
+  const loadSession = () => {
+    setLoading(true);
+    setLoadError(false);
     sessionAPI.getById(id)
       .then(({ data }) => setSession(data.session))
+      .catch(() => setLoadError(true))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    loadSession();
   }, [id]);
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-96">
-        <div className="animate-spin w-10 h-10 border-4 border-brand-500 border-t-transparent rounded-full" />
+      <div className="max-w-4xl mx-auto space-y-6 pt-4">
+        <div className="skeleton h-10 w-40" />
+        <div className="card p-8 space-y-5">
+          <div className="skeleton mx-auto h-24 w-24 rounded-full" />
+          <div className="skeleton mx-auto h-7 w-48" />
+          <div className="skeleton mx-auto h-4 w-72 max-w-full" />
+        </div>
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="card p-6 space-y-4"><div className="skeleton h-5 w-32" /><div className="skeleton h-4 w-full" /><div className="skeleton h-4 w-4/5" /></div>
+          <div className="card p-6 space-y-4"><div className="skeleton h-5 w-40" /><div className="skeleton h-4 w-full" /><div className="skeleton h-4 w-3/4" /></div>
+        </div>
       </div>
     );
   }
 
-  if (!session) return <p className="text-slate-400 text-center mt-20">Session not found.</p>;
+  if (loadError || !session) return (
+    <div className="card mx-auto mt-16 max-w-lg p-10 text-center">
+      <XCircle className="mx-auto mb-4 h-10 w-10 text-red-400" />
+      <h2 className="font-display text-xl font-bold text-white">We couldn’t load this result</h2>
+      <p className="mt-2 text-sm text-slate-400">Something went wrong while loading your interview performance.</p>
+      <div className="mt-6 flex justify-center gap-3">
+        <button onClick={loadSession} className="btn-primary">Try again</button>
+        <Link to="/sessions" className="btn-secondary">View history</Link>
+      </div>
+    </div>
+  );
 
   const score = session.overallScore ?? 0;
   const scoreColor = score >= 70 ? '#10b981' : score >= 40 ? '#f59e0b' : '#ef4444';

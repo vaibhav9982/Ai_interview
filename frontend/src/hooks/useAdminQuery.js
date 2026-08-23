@@ -8,8 +8,8 @@
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
-  getAdminUsers, getAdminJobs, getAdminTransactions,
-  getAdminLogs, getAdminSettings, getAdminAnalytics
+  getAdminUsers, getAdminTransactions, getAdminLogs,
+  getAdminSettings, getAdminAnalytics
 } from '@/services/admin.service';
 
 // ─── Query Hook for Users ─────────────────────────────────────────
@@ -18,15 +18,6 @@ export function useAdminUsersQuery(params) {
     queryKey: ['admin-users', params],
     queryFn: () => getAdminUsers(params),
     placeholderData: (prev) => prev, // smooth transitions
-  });
-}
-
-// ─── Query Hook for Jobs ──────────────────────────────────────────
-export function useAdminJobsQuery(params) {
-  return useQuery({
-    queryKey: ['admin-jobs', params],
-    queryFn: () => getAdminJobs(params),
-    placeholderData: (prev) => prev,
   });
 }
 

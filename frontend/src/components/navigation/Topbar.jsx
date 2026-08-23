@@ -8,7 +8,6 @@ const PAGE_TITLES = {
   '/interviews/new': 'New Interview',
   '/sessions': 'Session History',
   '/resumes': 'My Resumes',
-  '/jobs': 'Jobs Portal',
   '/profile': 'Profile',
 };
 
@@ -18,7 +17,7 @@ export default function Topbar({ onMenuClick }) {
   const title = PAGE_TITLES[pathname] || 'AI Interview';
 
   return (
-    <header className="h-16 bg-white/[0.02] backdrop-blur-xl border-b border-white/[0.06] flex items-center justify-between px-6 flex-shrink-0">
+    <header className="h-16 bg-[#0c1020]/80 backdrop-blur-xl border-b border-white/[0.07] flex items-center justify-between px-4 sm:px-6 flex-shrink-0">
       <div className="flex items-center gap-4">
         <button
           onClick={onMenuClick}
@@ -30,11 +29,11 @@ export default function Topbar({ onMenuClick }) {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className="p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/[0.06] transition-colors relative">
+        <button aria-label="Notifications" className="p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/[0.06] transition-colors relative">
           <Bell className="w-5 h-5" />
         </button>
         <div className="flex items-center gap-2 pl-3 border-l border-white/[0.06]">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-white font-bold text-xs shadow-[0_0_10px_rgba(244,63,94,0.2)]">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-500 to-violet-500 flex items-center justify-center text-white font-bold text-xs shadow-[0_0_10px_rgba(99,102,241,0.25)]">
             {user?.name?.charAt(0).toUpperCase()}
           </div>
           <span className="text-sm text-white/60 font-medium hidden sm:block">{user?.name}</span>

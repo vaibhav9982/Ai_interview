@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { clsx } from 'clsx';
 import {
   BrainCircuit, LayoutDashboard, MessageSquarePlus,
-  ClipboardList, FileText, History, User, LogOut, X, Briefcase, Sparkles
+  ClipboardList, FileText, History, User, LogOut, X
 } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
 import toast from 'react-hot-toast';
@@ -14,8 +14,6 @@ const NAV_ITEMS = [
   { to: '/interviews/new', icon: MessageSquarePlus, label: 'New Interview' },
   { to: '/sessions',    icon: History,            label: 'History' },
   { to: '/resumes',     icon: FileText,           label: 'Resumes' },
-  { to: '/jobs',        icon: Briefcase,          label: 'Jobs' },
-  { to: '/jobs/recommended', icon: Sparkles,       label: 'Recommendations' },
   { to: '/profile',     icon: User,               label: 'Profile' },
 ];
 
@@ -32,7 +30,7 @@ export default function Sidebar({ isOpen, onClose }) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white/[0.02] backdrop-blur-xl border-r border-white/[0.06]">
+      <aside className="hidden lg:flex flex-col w-64 bg-[#0c1020]/95 backdrop-blur-xl border-r border-white/[0.07]">
         <SidebarContent user={user} onLogout={handleLogout} />
       </aside>
 
@@ -44,7 +42,7 @@ export default function Sidebar({ isOpen, onClose }) {
             animate={{ x: 0 }}
             exit={{ x: -280 }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed left-0 top-0 z-30 h-full w-72 bg-[#0f0f1a]/95 backdrop-blur-2xl border-r border-white/[0.06] flex flex-col lg:hidden"
+            className="fixed left-0 top-0 z-30 h-full w-72 bg-[#0c1020]/95 backdrop-blur-2xl border-r border-white/[0.07] flex flex-col lg:hidden"
           >
             <button
               onClick={onClose}
@@ -65,11 +63,11 @@ function SidebarContent({ user, onLogout, onNavClick }) {
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-6 border-b border-white/[0.06]">
-        <div className="p-2 bg-gradient-to-br from-rose-500 to-pink-600 rounded-xl shadow-[0_0_16px_rgba(244,63,94,0.3)]">
+        <div className="p-2 bg-gradient-to-br from-brand-500 to-violet-500 rounded-xl shadow-[0_0_16px_rgba(99,102,241,0.32)]">
           <BrainCircuit className="w-5 h-5 text-white" />
         </div>
         <span className="font-display font-bold text-lg text-white tracking-tight">
-          Interview<span className="text-rose-400">AI</span>
+          Interview<span className="text-brand-300">AI</span>
         </span>
       </div>
 
@@ -85,20 +83,15 @@ function SidebarContent({ user, onLogout, onNavClick }) {
               clsx(
                 'flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200',
                 isActive
-                  ? 'bg-rose-500/15 text-rose-300 border border-rose-500/25 shadow-[0_0_12px_rgba(244,63,94,0.1)]'
+                  ? 'bg-brand-500/15 text-brand-200 border border-brand-500/25 shadow-[0_0_12px_rgba(99,102,241,0.14)]'
                   : 'text-white/40 hover:text-white hover:bg-white/[0.04]'
               )
             }
           >
             {({ isActive }) => (
               <>
-                <Icon className={clsx('w-5 h-5', isActive ? 'text-rose-400' : '')} />
+                <Icon className={clsx('w-5 h-5', isActive ? 'text-brand-300' : '')} />
                 <span className="flex-1">{label}</span>
-                {label === 'Jobs' && (
-                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-500/15 text-rose-400 border border-rose-500/20 uppercase tracking-tight">
-                    Soon
-                  </span>
-                )}
               </>
             )}
           </NavLink>
@@ -108,7 +101,7 @@ function SidebarContent({ user, onLogout, onNavClick }) {
       {/* User */}
       <div className="px-4 py-4 border-t border-white/[0.06]">
         <div className="flex items-center gap-3 mb-3 px-2">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-[0_0_12px_rgba(244,63,94,0.25)]">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-500 to-violet-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-[0_0_12px_rgba(99,102,241,0.25)]">
             {user?.name?.charAt(0).toUpperCase()}
           </div>
           <div className="min-w-0">
