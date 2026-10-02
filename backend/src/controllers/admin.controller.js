@@ -7,7 +7,7 @@ const Transaction = require('../models/Transaction.model');
 const AuditLog    = require('../models/AuditLog.model');
 const AppError    = require('../utils/AppError');
 
-const ADMIN_EMAIL = 'aftab@admin.com';
+const ADMIN_EMAIL = 'admin@example.com';
 const ADMIN_ROLES = ['admin', 'super_admin'];
 
 
